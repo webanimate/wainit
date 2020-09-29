@@ -4,6 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const argv = require('minimist')(process.argv.slice(2))
 const execa = require('execa')
+const commandExists = require('command-exists')
 const ora = require('ora')
 const figlet = require('figlet')
 const inquirer = require('inquirer')
@@ -93,15 +94,21 @@ inquirer.prompt(questions).then((answers) => {
     fs.writeFileSync(path.join(dirname, 'package.json'), `${JSON.stringify(pkg, null, 2)}\n`)
     fs.writeFileSync(path.join(dirname, 'index.js'), `export default {\n\n}\n`)
     process.chdir(dirname)
-    // && yarn prettier --check "**/*.*"
-    execa('yarn && yarn add file:c:\\my\\work\\web-animations-set\\ -D && yarn web-animations-set').then(
-      () => {
-        spinner.succeed('\x1b[32mWeb animations project successfully created!\x1b[0m')
-      },
-      (error) => {
-        spinner.fail('\x1b[31mError creating web animations project!\x1b[0m\n')
-        console.log(error)
-      }
-    )
+    let installYarn = ''
+    commandExists('yarn')
+      .catch(() => {
+        installYarn = 'npm install yarn --global && '
+      })
+      .finally(() => {
+        execa(installYarn + 'yarn && yarn add file:c:\\my\\work\\web-animations-set\\ -D && yarn web-animations-set').then(
+          () => {
+            spinner.succeed('\x1b[32mWeb animations project successfully created!\x1b[0m')
+          },
+          (error) => {
+            spinner.fail('\x1b[31mError creating web animations project!\x1b[0m\n')
+            console.log(error)
+          }
+        )
+      })
   })
 })

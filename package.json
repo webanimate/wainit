@@ -19,6 +19,7 @@
     "up": "yarn upgrade-interactive && ncu -i && yarn"
   },
   "dependencies": {
+    "command-exists": "^1.2.9",
     "execa": "^4.0.3",
     "figlet": "^1.5.0",
     "github-username-regex": "^1.0.0",
