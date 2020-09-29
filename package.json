@@ -1,0 +1,73 @@
+{
+  "name": "wainit",
+  "version": "0.0.1",
+  "description": "Create web animations set repository",
+  "main": "src/index.js",
+  "repository": "https://github.com/webanimate/wainit",
+  "author": "Web Animate",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "c": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "fix": "yarn fix:eslint && yarn fix:prettier",
+    "fix:eslint": "eslint --fix \"**/*.*\"",
+    "fix:prettier": "prettier --write \"**/*.*\"",
+    "lint": "yarn lint:eslint && yarn lint:prettier",
+    "lint:eslint": "eslint \"**/*.*\"",
+    "lint:prettier": "prettier --check \"**/*.*\"",
+    "test": "yarn fix && jest && yarn build",
+    "up": "yarn upgrade-interactive && ncu -i && yarn"
+  },
+  "dependencies": {
+    "execa": "^4.0.3",
+    "figlet": "^1.5.0",
+    "github-username-regex": "^1.0.0",
+    "inquirer": "^7.3.3",
+    "minimist": "^1.2.5",
+    "ora": "^5.1.0",
+    "sanitize-filename": "^1.6.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.10.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-html": "^6.1.0",
+    "eslint-plugin-json": "^2.1.2",
+    "prettier": "^2.1.2"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true,
+      "jest": true,
+      "node": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 11,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "html",
+      "json"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:json/recommended",
+      "prettier"
+    ]
+  },
+  "prettier": {
+    "printWidth": 280,
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
+  },
+  "keywords": [
+    "waapi",
+    "web",
+    "animations",
+    "api",
+    "web-animations-api",
+    "css",
+    "transitions"
+  ]
+}
