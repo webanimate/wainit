@@ -62,6 +62,18 @@ const _questions = [
       }
     },
   },
+  {
+    type: 'input',
+    name: 'author',
+    message: 'Author',
+    validate: (value) => {
+      if (value.trim()) {
+        return true
+      } else {
+        return '\x1b[31mEnter author!\x1b[0m'
+      }
+    },
+  },
 ]
 
 questions = [...questions, ..._questions]
@@ -80,14 +92,14 @@ inquirer.prompt(questions).then((answers) => {
   ]
 
   inquirer.prompt(questions).then((answers1) => {
-    // console.log(answers1)
-    // console.log(answers)
     fs.mkdirSync(dirname)
     const pkg = {
       name: answers.projectName,
       version: answers.version,
       main: 'index.js',
       repository: answers1.repository,
+      author: answers.author,
+      license: 'MIT',
     }
     const spinner = ora(' Creating web animations project')
     spinner.start()
