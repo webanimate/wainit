@@ -105,6 +105,25 @@ inquirer.prompt(questions).then((answers) => {
     spinner.start()
     fs.writeFileSync(path.join(dirname, 'package.json'), `${JSON.stringify(pkg, null, 2)}\n`)
     fs.writeFileSync(
+      path.join(dirname, '.gitignore'),
+      `.DS_Store
+.thumbs.db
+coverage
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+`
+    )
+    fs.writeFileSync(
       path.join(dirname, 'LICENSE'),
       `MIT License
 
