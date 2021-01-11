@@ -4,7 +4,7 @@
   "description": "Create web animations set repository",
   "main": "src/index.js",
   "repository": "https://github.com/webanimate/wainit",
-  "author": "Web Animate",
+  "author": "Web Animate <60752454+webanimate@users.noreply.github.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
@@ -20,20 +20,20 @@
   },
   "dependencies": {
     "command-exists": "^1.2.9",
-    "execa": "^4.0.3",
+    "execa": "^5.0.0",
     "figlet": "^1.5.0",
     "github-username-regex": "^1.0.0",
     "inquirer": "^7.3.3",
     "minimist": "^1.2.5",
-    "ora": "^5.1.0",
+    "ora": "^5.2.0",
     "sanitize-filename": "^1.6.3"
   },
   "devDependencies": {
-    "eslint": "^7.10.0",
-    "eslint-config-prettier": "^6.12.0",
-    "eslint-plugin-html": "^6.1.0",
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-html": "^6.1.1",
     "eslint-plugin-json": "^2.1.2",
-    "prettier": "^2.1.2"
+    "prettier": "^2.2.1"
   },
   "eslintConfig": {
     "env": {
