@@ -9,6 +9,7 @@ const ora = require('ora')
 const figlet = require('figlet')
 const inquirer = require('inquirer')
 const sanitize = require('sanitize-filename')
+const validateNpmPackageName = require('validate-npm-package-name')
 const githubUsernameRegex = require('github-username-regex')
 let dirname
 
@@ -27,7 +28,7 @@ if (!argv._[0]) {
     name: 'projectName',
     message: 'Project name',
     validate: (value) => {
-      if (value && value === sanitize(value)) {
+      if (value && value === sanitize(value) && validateNpmPackageName(value).validForNewPackages) {
         dirname = path.join(process.cwd(), value)
         if (fs.existsSync(dirname)) {
           return '\x1b[31mDirectory \x1b[36m' + value + '\x1b[31m already exists!\x1b[0m'
@@ -35,7 +36,7 @@ if (!argv._[0]) {
           return true
         }
       } else {
-        return '\x1b[31mProject name must be a valid file name!\x1b[0m'
+        return '\x1b[31mProject name contains invalid charachters!\x1b[0m'
       }
     },
   })
