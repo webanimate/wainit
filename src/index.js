@@ -118,7 +118,8 @@ inquirer.prompt(questions).then((answers) => {
         installYarn = 'npm install yarn --global && '
       })
       .finally(() => {
-        execa(installYarn + 'yarn && yarn add file:c:\\my\\work\\web-animations-set\\ -D && yarn web-animations-set').then(
+        // spinner.succeed('\x1b[32mWeb animations project successfully created!\x1b[0m')
+        execa(installYarn + 'yarn && yarn add file:c:\\my\\work\\web-animations-set\\ -D && yarn web-animations-set', { stdio: 'inherit' }).then(
           () => {
             spinner.succeed('\x1b[32mWeb animations project successfully created!\x1b[0m')
           },
