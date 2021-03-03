@@ -83,10 +83,26 @@ inquirer.prompt(questions).then((answers) => {
   const questions = [
     {
       type: 'input',
+      name: 'outputName',
+      message: 'Global variable name',
+      default: () => {
+        return answers['projectName'].replace(/\W/g, '')
+      },
+    },
+    {
+      type: 'input',
       name: 'repository',
       message: 'Repository url',
       default: () => {
         return 'https://github.com/' + answers['githubUsername'] + '/' + projectName
+      },
+    },
+    {
+      type: 'input',
+      name: 'homepage',
+      message: 'Homepage url',
+      default: () => {
+        return 'https://github.com/' + answers['githubUsername'] + '/' + projectName + '#readme'
       },
     },
   ]
@@ -95,9 +111,11 @@ inquirer.prompt(questions).then((answers) => {
     fs.mkdirSync(dirname)
     const pkg = {
       name: answers.projectName,
+      outputName: answers1.outputName,
       version: answers.version,
       main: 'index.js',
       repository: answers1.repository,
+      homepage: answers1.homepage,
       author: answers.author,
       license: 'MIT',
     }
