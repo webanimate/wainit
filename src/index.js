@@ -119,6 +119,11 @@ inquirer.prompt(questions).then((answers) => {
       homepage: answers1.homepage,
       author: answers.author,
       license: 'MIT',
+      scripts: {
+        test: 'web-animations-set',
+        w: 'web-animations-set',
+        up: 'yarn upgrade-interactive && ncu -i && yarn',
+      },
     }
     const spinner = ora(' Creating web animations project')
     spinner.start()
