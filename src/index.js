@@ -135,6 +135,7 @@ inquirer.prompt(questions).then((answers) => {
     fs.writeFileSync(path.join(dirname, 'LICENSE'), license.replace('{{year}}', new Date().getFullYear()).replace('{{author}}', answers.author))
 
     fs.copyFileSync(path.join(__dirname, 'index.example.js'), path.join(dirname, 'index.js'))
+    fs.copyFileSync(path.join(__dirname, 'README.template.md'), path.join(dirname, 'README.template.md'))
     process.chdir(dirname)
     let installYarn = ''
     commandExists('yarn')
