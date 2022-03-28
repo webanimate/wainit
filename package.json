@@ -24,7 +24,7 @@
     "figlet": "^1.5.0",
     "github-username-regex": "^1.0.0",
     "inquirer": "^8.0.0",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "ora": "^5.4.0",
     "sanitize-filename": "^1.6.3",
     "validate-npm-package-name": "^3.0.0"
